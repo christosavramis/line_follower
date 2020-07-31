@@ -33,6 +33,12 @@
   <!-- RViz -->
   <node name="rviz" pkg="rviz" type="rviz" args="-d $(find turtlebot3_gazebo)/rviz/turtlebot3_gazebo_model.rviz"/>
   
-<!--  <node pkg="simulation_move" name="simulation_move" type="simulation_move.py" output="screen" />-->
+  <!-- Detection node -->
+  <node pkg="line_follower" name="line_follower" type="line_follower.py" output="screen" />
+<!--  <node pkg="line_follower_turtlebot" name="detection" type="detect" cwd="node" output="screen" />-->
+
+  <!-- Robot commands node -->
+  <node pkg="line_follower" name="simulation_move" type="simulation_move.py" output="screen" />
+<!--  <node pkg="line_follower_turtlebot" name="Velocity" type="navig" cwd="node" output="screen" />-->
 
 </launch>
