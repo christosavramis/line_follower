@@ -2,7 +2,7 @@
 
 - [Setup](#setup)
 - [How to run](#how-to-run)
-- [Workspace Structure](#workspace-structure)
+- [Control the robot with the keyboard](#control-the-robot-with-the-keyboard)
 
 ---
 
@@ -10,7 +10,13 @@
 
 1. You need to have [ROS Melodic](http://wiki.ros.org/melodic/Installation/Ubuntu) installed.
 2. Create [a new catkin workspace](http://wiki.ros.org/catkin/Tutorials/create_a_workspace) if you don't have one already.
-3. Clone this repository inside workspace/src: `git clone https://github.com/FineasRobotics/Line-Follower.git`
+3. Clone this repository inside workspace/src: `https://github.com/FineasRobotics/line_follower.git`
+4. Install packages: `sudo apt-get install sudo apt-get install ros-melodic-turtlebot3 ros-melodic-turtlebot3-msgs ros-melodic-turtlebot3-simulations`
+5. Run from the root of workspace: `catkin_make`
+6. To use turtlebot3, you need to specify which model you are going to use. To do that:
+    - You either run `export TURTLEBOT3_MODEL=${TB3_MODEL}` where `${TB3_MODEL}` you put burger, waffle or waffle_pi before running the simulation.
+    - Or you put the above line at the end of your ~/.bashrc, with: `gedit ~/.bashrc`
+**PS**: We use waffle.
 
 ---
 
@@ -22,5 +28,6 @@ Tip: you can make gazebo open its GUI by changing gui argument inside gazebo_sim
 
 ---
 
-### Workspace Structure
+#### Control the robot with the keyboard
 
+Open another terminal and run: `roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch` 
