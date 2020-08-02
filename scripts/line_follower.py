@@ -13,21 +13,14 @@ class Follower:
   def image_callback(self, msg):
     image = self.bridge.imgmsg_to_cv2(msg,desired_encoding='bgr8')
     
-    # Gaussian blur
-    new_img = cv2.GaussianBlur(image,(3,3), 0.1, 0.1)
-    
     # Detect all objects within the HSV range
-    hsv = cv2.cvtColor(new_img, cv2.COLOR_BGR2HSV)
+    hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
     lower_yellow = numpy.array([ 20, 100, 100])
     upper_yellow = numpy.array([ 30, 255, 255])
     mask = cv2.inRange(hsv, lower_yellow, upper_yellow)
     
     h, w, d = image.shape
     mask[0:w, 0:int(0.8*h)] = 0
-    
-    # Mask image to limit the future turns affecting the output
-    mask[int(0.7*w):int(0.3*w), 0:h] = 0
-    mask[0:int(0.3*w), 0:h] = 0
     
     # Perform centroid detection of line
     M = cv2.moments(mask)
@@ -37,7 +30,7 @@ class Follower:
       cy = int(M['m01']/M['m00'])
       cv2.circle(image, (cx, cy), 5, (155, 200, 0), -1)
     
-    tol = 15
+    tol = 25
     count = cv2.countNonZero(mask);
     if cx < w/2-tol:
       message = "FL"

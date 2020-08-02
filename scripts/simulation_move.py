@@ -6,6 +6,7 @@ from std_msgs.msg import String
 
 def callback(data):
   vel_msg = Twist()
+#  rospy.loginfo(data.data)
   
   if data.data == 'F':
     # Going straight
@@ -13,12 +14,12 @@ def callback(data):
     vel_msg.angular.z = 0
   elif data.data == 'FR':
     # Turning right
-    vel_msg.linear.x = 0.1
-    vel_msg.angular.z = -0.15
+    vel_msg.linear.x = 0.15
+    vel_msg.angular.z = -0.2
   elif data.data == 'FL':
     # Turning left
-    vel_msg.linear.x = 0.1
-    vel_msg.angular.z = 0.15
+    vel_msg.linear.x = 0.15
+    vel_msg.angular.z = 0.2
   else :
     # Searching
     vel_msg.linear.x = 0
