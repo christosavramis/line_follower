@@ -31,15 +31,16 @@ class Follower:
       cv2.circle(image, (cx, cy), 5, (155, 200, 0), -1)
     
     tol = 25
-    count = cv2.countNonZero(mask);
+    count = cv2.countNonZero(mask)
+
     if cx < w/2-tol:
-      message = "FL"
+      message = 'FL'
     elif cx > w/2+tol:
-      message = "FR"
+      message = 'FR'
     elif count == 0:
-      message = "IDK"
+      message = 'RT'
     else:
-      message = "F"
+      message = 'F'
     
     self.cmd_vel_pub.publish(message)
 #    cv2.imshow("mask",mask)
@@ -52,4 +53,3 @@ if __name__ == '__main__':
     follower = Follower()
     rospy.spin()
   except rospy.ROSInterruptException: pass
-

@@ -13,7 +13,7 @@
     <arg name="world_name" value="$(arg world_name)"/>
     <arg name="paused" value="false"/>
     <arg name="use_sim_time" value="true"/>
-    <arg name="gui" value="true"/>
+    <arg name="gui" value="false"/>
     <arg name="headless" value="false"/>
     <arg name="recording" value="false"/>
     <arg name="debug" value="false"/>
@@ -32,13 +32,13 @@
   
   <!-- RViz -->
   <node name="rviz" pkg="rviz" type="rviz" args="-d $(find turtlebot3_gazebo)/rviz/turtlebot3_gazebo_model.rviz"/>
-  
+ 
   <!-- Detection node -->
   <node pkg="line_follower" name="line_follower" type="line_follower.py" output="screen" />
-<!--  <node pkg="line_follower_turtlebot" name="detection" type="detect" cwd="node" output="screen" />-->
+  <!--  <node pkg="line_follower_turtlebot" name="detection" type="detect" cwd="node" output="screen" />-->
 
   <!-- Robot commands node -->
   <node pkg="line_follower" name="simulation_move" type="simulation_move.py" output="screen" />
-<!--  <node pkg="line_follower_turtlebot" name="Velocity" type="navig" cwd="node" output="screen" />-->
+  <!-- <node pkg="line_follower_turtlebot" name="Velocity" type="navig" cwd="node" output="screen" />-->
 
 </launch>
