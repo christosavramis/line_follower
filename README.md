@@ -31,3 +31,8 @@ Tip: you can make gazebo open its GUI by changing gui argument inside gazebo_sim
 #### Control the robot with the keyboard
 
 Open another terminal and run: `roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch` 
+
+---
+
+### How to run tests
+1. To test line_follower, run inside test folder: `python -m unittest test_line_follower`
