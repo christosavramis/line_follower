@@ -5,6 +5,7 @@ class TestCV:
     def run(self):
         cap = cv2.VideoCapture(0)
         cmd_vel_pub = rospy.Publisher('direction', String, queue_size=1)
+	message = ""
         while True:
             _, frame = cap.read()
 
@@ -33,16 +34,16 @@ class TestCV:
             count = cv2.countNonZero(th1)
 
             #  o||
-            if cx < w/2 - tol:
+            if cx < w/2 - tol and message !='FL':
                 message = 'FL'
             # ||o
-            elif cx > w/2 + tol:
+            elif cx > w/2 + tol and message !='FR':
                 message = 'FR'
             # ||
-            elif count == 0:
+            elif count == 0 and message !='RL':
                 message = 'RT'
             # |o|
-            else:
+            elif message !='F':
                 message = 'F'
             cmd_vel_pub.publish(message)
            
