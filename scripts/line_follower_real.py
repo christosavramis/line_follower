@@ -4,10 +4,11 @@ from std_msgs.msg import String
 class TestCV:
     def run(self):
         cap = cv2.VideoCapture(0)
+        cmd_vel_pub = rospy.Publisher('direction', String, queue_size=1)
         while True:
             _, frame = cap.read()
-            gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-            cv2.imshow("frame",frame)
+
+            #cv2.imshow("frame",frame)
 
             #reduce frame size 
             h,w,d = frame.shape
@@ -33,16 +34,17 @@ class TestCV:
 
             #  o||
             if cx < w/2 - tol:
-                print('FL')
+                message = 'FL'
             # ||o
             elif cx > w/2 + tol:
-                print('FR')
+                message = 'FR'
             # ||
             elif count == 0:
-                print('RT')
+                message = 'RT'
             # |o|
             else:
-                print('F')
+                message = 'F'
+            cmd_vel_pub.publish(message)
            
 
             #debuging 

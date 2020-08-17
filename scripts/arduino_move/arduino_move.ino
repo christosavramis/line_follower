@@ -9,18 +9,18 @@ Servo leftServo;  // Max-Backward: 180, Stopped: 90, Max-Forward:0
 void servoControl(String direction){
 
   if(direction == "F"){       // Move forward
-      rightServo.write(180);
-      leftServo.write(0);
+      rightServo.write(100);
+      leftServo.write(80);
       delay(100);
   }
-  else if(direction == "FR"){ // Move Right while moving forward +F
-      rightServo.write(120);
-      leftServo.write(0);
+  else if(direction == "FL"){ // Move Right while moving forward +F
+      rightServo.write(90);
+      leftServo.write(70);
       delay(100);
   }
-  else if(direction == "FL"){ // Move Left while moving forward +F
-      rightServo.write(180);
-      leftServo.write(60);
+  else if(direction == "FR"){ // Move Left while moving forward +F
+      rightServo.write(110);
+      leftServo.write(90);
       delay(100);
   }
   else if(direction == "RT"){ // Rotate Counter-Clockwise
