@@ -13,12 +13,12 @@ void servoControl(String direction){
       leftServo.write(80);
       delay(100);
   }
-  else if(direction == "FL"){ // Move Right while moving forward +F
+  else if(direction == "FR"){ // Move Right while moving forward +F
       rightServo.write(90);
       leftServo.write(70);
       delay(100);
   }
-  else if(direction == "FR"){ // Move Left while moving forward +F
+  else if(direction == "FL"){ // Move Left while moving forward +F
       rightServo.write(110);
       leftServo.write(90);
       delay(100);

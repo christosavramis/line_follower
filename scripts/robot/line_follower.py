@@ -1,11 +1,12 @@
 import rospy, cv2, cv_bridge, numpy
 from sensor_msgs.msg import Image, CameraInfo
 from std_msgs.msg import String
+
 class TestCV:
     def run(self):
         cap = cv2.VideoCapture(0)
         cmd_vel_pub = rospy.Publisher('direction', String, queue_size=1)
-	message = ""
+        message = ''
         while True:
             _, frame = cap.read()
 
@@ -47,7 +48,6 @@ class TestCV:
                 message = 'F'
             cmd_vel_pub.publish(message)
            
-
             #debuging 
             if cv2.waitKey(1) == ord('q'):
                 break
@@ -59,6 +59,7 @@ class TestCV:
             cv2.imshow("frame_det",frame_det)
             cv2.imshow("th1",th1)
 
+
 def findCenter(frame):
     m = cv2.moments(frame)
     if m['m00'] > 0:
@@ -68,8 +69,9 @@ def findCenter(frame):
     else:
         return 0,0
 
+
 if __name__ == '__main__':
-	rospy.init_node('line_follower')
-        testCv = TestCV()
-        testCv.run()
-	rospy.spin()
+    rospy.init_node('line_follower')
+    testCv = TestCV()
+    testCv.run()
+    rospy.spin()
