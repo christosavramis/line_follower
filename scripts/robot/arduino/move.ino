@@ -14,13 +14,13 @@ void servoControl(String direction){
       delay(100);
   }
   else if(direction == "FR"){ // Move Right while moving forward +F
-      rightServo.write(90);
+      rightServo.write(100);
       leftServo.write(70);
       delay(100);
   }
   else if(direction == "FL"){ // Move Left while moving forward +F
       rightServo.write(110);
-      leftServo.write(90);
+      leftServo.write(80);
       delay(100);
   }
   else if(direction == "RT"){ // Rotate Counter-Clockwise
@@ -35,11 +35,11 @@ void servoControl(String direction){
   }
   else if(direction == "R"){ // Turn Right while stopped
       rightServo.write(90);
-      leftServo.write(0);
+      leftServo.write(45);
       delay(100);
   }
   else if(direction == "L"){ // Turn Left while stopped
-      rightServo.write(180);
+      rightServo.write(135);
       leftServo.write(90);
       delay(100);
   } 
