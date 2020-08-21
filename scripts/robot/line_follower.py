@@ -7,7 +7,11 @@ from std_msgs.msg import String
 class Follower:
   
   def __init__(self):
+<<<<<<< HEAD
     self.camera_topic = rospy.get_param('~camera_topic')
+=======
+    self.camera_topic = rospy.get_param('~camera_topic')
+>>>>>>> 00df591f3aa9dd45857096443c11027e7ee217a8
     self.bridge = cv_bridge.CvBridge()
     self.image_sub = rospy.Subscriber(self.camera_topic, Image, self.image_callback)
     self.cmd_vel_pub = rospy.Publisher('direction', String, queue_size=1)
