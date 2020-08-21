@@ -47,7 +47,7 @@ class Follower:
     cv2.imshow("output", image)
 
     return message
-  
+    
   def image_callback(self, msg):
     image = self.bridge.imgmsg_to_cv2(msg,desired_encoding='bgr8')
     message = self.colorthresh(image)
