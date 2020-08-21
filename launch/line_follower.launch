@@ -5,7 +5,8 @@
 
   <!-- REAL WORLD LAUNCH -->
   <group if="$(eval arg('mode')=='real')">
-  
+    <arg name="camera_topic" value="usb_cam/image_raw" />
+    
     <!-- Camera node -->
     <node name="usb_cam" pkg="usb_cam" type="usb_cam_node" output="screen">
       <param name="video_device" value="/dev/video0"/>
@@ -19,16 +20,12 @@
     <!-- Arduino communication node -->
     <node pkg="rosserial_python" name="ros_serial" type="serial_node.py" 
           args="_port:=/dev/ttyACM0 _baud:=9600" respawn="true" output="screen"/>
-
-    <!-- Detection node -->
-    <node pkg="line_follower" name="line_follower" type="line_follower.py" output="screen"/>
-    
   </group>
-
 
 
   <!-- SIMULATION LAUNCH -->
   <group if="$(eval arg('mode')=='sim')">
+    <arg name="camera_topic" value="/camera/rgb/image_raw" />
     <arg name="model" default="$(env TURTLEBOT3_MODEL)" doc="model type [burger, waffle, waffle_pi]"/>
     <arg name="x" default="0.276911"/>
     <arg name="y" default="0.003131"/>
@@ -57,12 +54,14 @@
     
     <!-- RViz -->
     <node name="rviz" pkg="rviz" type="rviz" args="-d $(find turtlebot3_gazebo)/rviz/turtlebot3_gazebo_model.rviz"/>
- 
-    <!-- Detection node -->
-    <node pkg="line_follower" name="line_follower" type="line_follower_sim.py" output="screen"/>
 
     <!-- Simulated movement node -->
     <node pkg="line_follower" name="move" type="move_sim.py" output="screen"/>
   </group>
-
+  
+  <!-- Detection node -->
+  <node pkg="line_follower" name="line_follower" type="line_follower.py" output="screen">
+    <param name="camera_topic" value="$(arg camera_topic)" />
+  </node>
+  
 </launch>
