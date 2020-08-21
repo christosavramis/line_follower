@@ -7,11 +7,7 @@ from std_msgs.msg import String
 class Follower:
   
   def __init__(self):
-<<<<<<< HEAD
     self.camera_topic = rospy.get_param('~camera_topic')
-=======
-    self.camera_topic = rospy.get_param('~camera_topic')
->>>>>>> 00df591f3aa9dd45857096443c11027e7ee217a8
     self.bridge = cv_bridge.CvBridge()
     self.image_sub = rospy.Subscriber(self.camera_topic, Image, self.image_callback)
     self.cmd_vel_pub = rospy.Publisher('direction', String, queue_size=1)
@@ -46,17 +42,17 @@ class Follower:
     cv2.imshow("th1",th1)
         
     if cx > w/2 + forward_tolerance:      # Righthand deviation
-      message = 'R'              # Rotate clockwise
+      message = 'R'                          # Rotate clockwise
     elif cx < w/2 - forward_tolerance:    # Lefthand deviation
-      message = 'L'              # Rotate counter-clockwise
+      message = 'L'                         # Rotate counter-clockwise
     elif cx > w/2 + rotational_tolerance: # Slight rigthand deviation
-      message = 'FR'              # Lean right while moving forward
+      message = 'FR'                        # Lean right while moving forward
     elif cx < w/2 - rotational_tolerance: # Slight lefthand deviation
-      message = 'FL'              # Lean left while moving forward
-    elif count == 0:            # Line not found
-      message = 'NF'              # Smart recovery
-    else:                       # Line Centered
-      message = 'F'               # Move forward
+      message = 'FL'                        # Lean left while moving forward
+    elif count == 0:                      # Line not found
+      message = 'NF'                        # Smart recovery
+    else:                                 # Line Centered
+      message = 'F'                         # Move forward
 
     return message
 
