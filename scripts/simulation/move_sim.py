@@ -10,27 +10,27 @@ def callback(data):
   
   if data.data == 'F':
     # Going forward
-    vel_msg.linear.x = 0.3
+    vel_msg.linear.x = 0.5
     vel_msg.angular.z = 0
   elif data.data == 'FR':
     # Leaning right
-    vel_msg.linear.x = 0.25
-    vel_msg.angular.z = -0.2
+    vel_msg.linear.x = 0.35
+    vel_msg.angular.z = -0.15
   elif data.data == 'R':
     # Turning right
     vel_msg.linear.x = 0
-    vel_msg.angular.z = -0.5
+    vel_msg.angular.z = -0.3
   elif data.data == 'FL':
     # Leaning left
-    vel_msg.linear.x = 0.25
-    vel_msg.angular.z = 0.2
+    vel_msg.linear.x = 0.35
+    vel_msg.angular.z = 0.15
   elif data.data == 'L':
     # Turning left
     vel_msg.linear.x = 0
-    vel_msg.angular.z = 0.5
+    vel_msg.angular.z = 0.3
   elif data.data == 'B':
     # Going backward
-    vel_msg.linear.x = -0.3
+    vel_msg.linear.x = -0.35
     vel_msg.angular.z = 0
   else:
     # Stopping

@@ -58,9 +58,10 @@
           -x $(arg x) -y $(arg y) -z $(arg z) -Y $(arg yaw)"/>
     <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher"/>
     
-    <!-- RViz -->
+    <!-- RViz 
     <node name="rviz" pkg="rviz" type="rviz" args="-d $(find turtlebot3_gazebo)/rviz/turtlebot3_gazebo_model.rviz"/>
-
+    -->
+    
     <!-- Simulated movement node -->
     <node pkg="line_follower" name="move" type="move_sim.py" output="screen"/>
 

@@ -29,8 +29,8 @@ class Follower:
 
     # Detect if there filter is empty => there is no black tape detected
     count = cv2.countNonZero(th1)
-    forward_tolerance = 90
-    rotational_tolerance = 55
+    forward_tolerance = 190
+    rotational_tolerance = 90
 
     # Draw center line
     cv2.rectangle(image_det, (int(w/2)+forward_tolerance,h), (int(w/2)-forward_tolerance,0), (0, 0, 255), 5) 
