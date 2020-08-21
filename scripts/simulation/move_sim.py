@@ -9,21 +9,29 @@ def callback(data):
 #  rospy.loginfo(data.data)
   
   if data.data == 'F':
-    # Going straight
-    vel_msg.linear.x = 0.25
+    # Going forward
+    vel_msg.linear.x = 0.3
     vel_msg.angular.z = 0
   elif data.data == 'FR':
-    # Turning right
-    vel_msg.linear.x = 0.15
+    # Leaning right
+    vel_msg.linear.x = 0.25
     vel_msg.angular.z = -0.2
-  elif data.data == 'FL':
-    # Turning left
-    vel_msg.linear.x = 0.15
-    vel_msg.angular.z = 0.2
-  elif data.data == 'RT' :
-    # Searching
+  elif data.data == 'R':
+    # Turning right
     vel_msg.linear.x = 0
-    vel_msg.angular.z = 0.30
+    vel_msg.angular.z = -0.5
+  elif data.data == 'FL':
+    # Leaning left
+    vel_msg.linear.x = 0.25
+    vel_msg.angular.z = 0.2
+  elif data.data == 'L':
+    # Turning left
+    vel_msg.linear.x = 0
+    vel_msg.angular.z = 0.5
+  elif data.data == 'B':
+    # Going backward
+    vel_msg.linear.x = -0.3
+    vel_msg.angular.z = 0
   else:
     # Stopping
     vel_msg.linear.x = 0
