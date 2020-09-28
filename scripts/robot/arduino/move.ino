@@ -9,45 +9,45 @@ Servo leftServo;  // ↑ Max-Backward:   0, Stopped: 90, ↑ Max-Forward:180
 void servoControl(String direction){
 
   if(direction == "F"){       // Move forward
-      rightServo.write(40);
-      leftServo.write(180);
-      delay(10);
+      rightServo.write(45);
+      leftServo.write(135);
+      delay(20);
   }
   else if(direction == "FR"){ // Lean right while moving forward
-      rightServo.write(10);
-      leftServo.write(180);
-      delay(10);
+      rightServo.write(55);
+      leftServo.write(145);
+      delay(20);
   }
   else if(direction == "FL"){ // Lean left while moving forward
-      rightServo.write(70);
-      leftServo.write(180);
-      delay(10);
+      rightServo.write(35);
+      leftServo.write(125);
+      delay(20);
   }  
   else if(direction == "R"){  // Rotate clockwise
       rightServo.write(90);
       leftServo.write(90);
-      delay(10);
-      rightServo.write(180);
-      leftServo.write(172);
-      delay(10);
+      delay(20);
+      rightServo.write(160);
+      leftServo.write(160);
+      delay(20);
   }
   else if(direction == "L"){  // Rotate counter-clockwise
       rightServo.write(90);
       leftServo.write(90);
-      delay(10);
-      rightServo.write(42);
-      leftServo.write(0);
-      delay(10);
+      delay(20);
+      rightServo.write(20);
+      leftServo.write(20);
+      delay(20);
   }
   else if(direction == "B"){  // Move backwards
-      rightServo.write(170);
-      leftServo.write(0);
-      delay(10);
+      rightServo.write(135);
+      leftServo.write(45);
+      delay(20);
   } 
   else{                       // Uknown message, stop moving
       rightServo.write(90);
       leftServo.write(90);
-      delay(10);
+      delay(20);
   }
 }
 
@@ -73,5 +73,5 @@ void setup(){
 // Main arduino function
 void loop(){
   nh.spinOnce();
-  delay(10);
+  delay(20);
 }
