@@ -11,12 +11,6 @@
 - [How to run](#how-to-run)
 - [Control the robot with the keyboard](#control-the-robot-with-the-keyboard)
 
---- Table of Contents
-
-- [Setup](#setup)
-- [How to run](#how-to-run)
-- [Control the robot with the keyboard](#control-the-robot-with-the-keyboard)
-
 ---
 
 ### Setup
